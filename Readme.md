@@ -36,7 +36,7 @@ Use the following settings for native Authy tokens.
 
 The period shown in the Authy Chrome App is 20 seconds, but it actually uses 10 second intervals and skips every other token.
 
-If your authenticator application only allows 6 or 8 digits (like [FreeOTP](https://freeotp.github.io/), choose 8 digits and use the last 7 digits for your code.
+If your authenticator application only allows 6 or 8 digits (like [FreeOTP](https://freeotp.github.io/)), choose 8 digits and use the last 7 digits for your code.
 
 ### Import using QR codes
 
