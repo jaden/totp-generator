@@ -6,10 +6,20 @@ function stripSpaces(str) {
   return str.replace(/\s/g, '');
 }
 
+function truncateTo(str, digits) {
+  if (str.length <= digits) {
+    return str;
+  }
+
+  return str.slice(-digits);
+}
+
 new Vue({
   el: '#app',
   data: {
     secret_key: 'JBSWY3DPEHPK3PXP',
+    digits: 6,
+    period: 30,
     updatingIn: 0,
     token: null
   },
@@ -28,17 +38,17 @@ new Vue({
     totp: function () {
       return new OTPAuth.TOTP({
         algorithm: 'SHA1',
-        digits: 6,
-        period: 30,
-        secret: OTPAuth.Secret.fromB32(stripSpaces(this.secret_key))
+        digits: this.digits,
+        period: this.period,
+        secret: OTPAuth.Secret.fromB32(stripSpaces(this.secret_key)),
       });
     }
   },
 
   methods: {
     update: function () {
-      this.updatingIn = 30 - (getCurrentSeconds() % 30);
-      this.token = this.totp.generate();
+      this.updatingIn = this.period - (getCurrentSeconds() % this.period);
+      this.token = truncateTo(this.totp.generate(), this.digits);
     }
   }
 });
