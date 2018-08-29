@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Convert hexadecimal to base-32</title>
-  <link rel="stylesheet" href="css/bulma-0.5.1.min.css">
+  <link rel="stylesheet" href="css/bulma-0.7.1.min.css">
   <style>
     @media screen and (min-width: 1068px) {
       .container {
@@ -26,13 +26,13 @@
       <div class="field">
         <div class="control is-expanded">
           <input class="input" type="text" v-model="hex" autofocus placeholder="The secret key (in hex)">
-        </div>        
+        </div>
       </div>
 
       <div v-show="base32" class="box" style="background-color: #fafafa">
         <label class="label is-uppercase">Base-32</label>
         <p class="has-text-info is-size-4 has-text-weight-bold">{{ base32 }}</p>
-      </div>      
+      </div>
 
     </div>
 
