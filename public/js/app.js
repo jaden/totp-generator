@@ -25,6 +25,7 @@ new Vue({
   },
 
   mounted: function () {
+    this.getKeyFromUrl();
     this.update();
 
     this.intervalHandle = setInterval(this.update, 1000);
@@ -49,6 +50,14 @@ new Vue({
     update: function () {
       this.updatingIn = this.period - (getCurrentSeconds() % this.period);
       this.token = truncateTo(this.totp.generate(), this.digits);
-    }
+    },
+
+    getKeyFromUrl: function () {
+      const key = document.location.hash.replace(/[#\/]+/, '');
+
+      if (key.length > 0) {
+        this.secret_key = key;
+      }
+    },
   }
 });

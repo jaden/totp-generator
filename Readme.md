@@ -6,6 +6,10 @@ This page lets you easily generate a time-based one time password (TOTP) entirel
 
 It uses the excellent [otpauth](https://github.com/zant95/otpauth) package, downloaded from [raw.githubusercontent.com/zant95/otpauth/master/dist/otpauth.min.js](https://raw.githubusercontent.com/zant95/otpauth/master/dist/otpauth.min.js).
 
+## Private key in URL
+
+You can also provide the key in the URL, for example: `https://totp.danhersam.com/#/YOUR_SECRET_KEY`
+
 ## Authy support
 
 To use Authy tokens outside of the Authy app, you need to extract the secret key and convert it to base-32. The resulting token can then be used with this tool.
