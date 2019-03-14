@@ -8,7 +8,7 @@ It uses the excellent [otpauth](https://github.com/zant95/otpauth) package, down
 
 ## Private key in URL
 
-You can also provide the key in the URL, for example: `https://totp.danhersam.com/#/YOUR_SECRET_KEY`
+You can also provide the key in the URL, for example: `https://totp.danhersam.com/#/KEY`
 
 ## Authy support
 
