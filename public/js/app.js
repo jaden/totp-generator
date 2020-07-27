@@ -21,7 +21,8 @@ new Vue({
     digits: 6,
     period: 30,
     updatingIn: 0,
-    token: null
+    token: null,
+    clipboardButton: null,
   },
 
   mounted: function () {
@@ -29,6 +30,8 @@ new Vue({
     this.update();
 
     this.intervalHandle = setInterval(this.update, 1000);
+
+    this.clipboardButton = new ClipboardJS('#clipboard-button');
   },
 
   destroyed: function () {
