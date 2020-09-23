@@ -27,6 +27,7 @@ new Vue({
 
   mounted: function () {
     this.getKeyFromUrl();
+    this.getSettings()
     this.update();
 
     this.intervalHandle = setInterval(this.update, 1000);
@@ -62,5 +63,23 @@ new Vue({
         this.secret_key = key;
       }
     },
+    getSettings: function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const key = urlParams.get('key');
+      const digits = urlParams.get('digits');
+      const period = urlParams.get('period');
+
+      if (key) {
+        this.secret_key = key
+      }
+
+      if (digits) {
+        this.digits = digits
+      }
+
+      if (period) {
+        this.period = period
+      }
+    }
   }
 });

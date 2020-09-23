@@ -8,9 +8,9 @@ This page lets you easily generate a time-based one time password (TOTP) entirel
 
 It uses the excellent [otpauth](https://github.com/zant95/otpauth) package, downloaded from [raw.githubusercontent.com/zant95/otpauth/master/dist/otpauth.min.js](https://raw.githubusercontent.com/zant95/otpauth/master/dist/otpauth.min.js).
 
-## Private key in URL
+## Providing parameters in the URL
 
-You can also provide the key in the URL, for example: `https://totp.danhersam.com/#/KEY`
+You can also provide the key, digits and token period using a query string in the URL, for example: `https://totp.danhersam.com/?period=60&digits=6&key=KEY`
 
 ## Authy support
 
