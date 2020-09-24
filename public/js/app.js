@@ -14,6 +14,18 @@ function truncateTo(str, digits) {
   return str.slice(-digits);
 }
 
+function parseURLSearch(search) {
+  const queryParams = search.substr(1).split('&').reduce(function (q, query) {
+    const chunks = query.split('=');
+    const key = chunks[0];
+    let value = decodeURIComponent(chunks[1]);
+    value = isNaN(Number(value)) ? value : Number(value);
+    return (q[key] = value, q);
+  }, {});
+
+  return queryParams;
+}
+
 new Vue({
   el: '#app',
   data: {
@@ -27,7 +39,7 @@ new Vue({
 
   mounted: function () {
     this.getKeyFromUrl();
-    this.getSettings()
+    this.getQueryParameters()
     this.update();
 
     this.intervalHandle = setInterval(this.update, 1000);
@@ -63,22 +75,19 @@ new Vue({
         this.secret_key = key;
       }
     },
-    getSettings: function () {
-      const urlParams = new URLSearchParams(window.location.search);
-      const key = urlParams.get('key');
-      const digits = urlParams.get('digits');
-      const period = urlParams.get('period');
+    getQueryParameters: function () {
+      const queryParams = parseURLSearch(window.location.search);
 
-      if (key) {
-        this.secret_key = key
+      if (queryParams.key) {
+        this.secret_key = queryParams.key;
       }
 
-      if (digits) {
-        this.digits = digits
+      if (queryParams.digits) {
+        this.digits = queryParams.digits;
       }
 
-      if (period) {
-        this.period = period
+      if (queryParams.period) {
+        this.period = queryParams.period;
       }
     }
   }
