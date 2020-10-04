@@ -26,10 +26,14 @@ function parseURLSearch(search) {
   return queryParams;
 }
 
+
+
 new Vue({
   el: '#app',
   data: {
-    secret_key: 'JBSWY3DPEHPK3PXP',
+    secret_key: 'XXXXXSAMPLEXXXXX',
+    nickname: 'user@sample.com',
+    uri: 'otpauth://',
     digits: 6,
     period: 30,
     updatingIn: 0,
@@ -66,6 +70,9 @@ new Vue({
     update: function () {
       this.updatingIn = this.period - (getCurrentSeconds() % this.period);
       this.token = truncateTo(this.totp.generate(), this.digits);
+      this.uri = 'otpauth://totp/' + encodeURIComponent(this.nickname) + '?secret=' + this.secret_key;
+      document.getElementById("qr").innerHTML = "";
+      var qrcode = new QRCode(document.getElementById("qr"), this.uri);
     },
 
     getKeyFromUrl: function () {
