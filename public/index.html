@@ -67,7 +67,7 @@
 
       <div class="content">
         <span class="has-text-grey is-size-7">Updating in {{ updatingIn }} seconds</span>
-        <progress class="progress is-info is-small" v-bind:value="period - updatingIn" :max="period"></progress>
+        <progress class="progress is-info is-small" v-bind:value="updatingIn" :max="period"></progress>
       </div>
 
       <div class="box">

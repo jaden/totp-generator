@@ -32,7 +32,7 @@ new Vue({
     secret_key: 'JBSWY3DPEHPK3PXP',
     digits: 6,
     period: 30,
-    updatingIn: 0,
+    updatingIn: 30,
     token: null,
     clipboardButton: null,
   },
