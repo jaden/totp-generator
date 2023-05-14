@@ -26,15 +26,16 @@ function parseURLSearch(search) {
   return queryParams;
 }
 
-new Vue({
-  el: '#app',
-  data: {
-    secret_key: 'JBSWY3DPEHPK3PXP',
-    digits: 6,
-    period: 30,
-    updatingIn: 30,
-    token: null,
-    clipboardButton: null,
+const app = Vue.createApp({
+  data() {
+    return {
+      secret_key: 'JBSWY3DPEHPK3PXP',
+      digits: 6,
+      period: 30,
+      updatingIn: 30,
+      token: null,
+      clipboardButton: null,
+    };
   },
 
   mounted: function () {
@@ -92,3 +93,5 @@ new Vue({
     }
   }
 });
+
+app.mount('#app');
