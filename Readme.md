@@ -20,38 +20,6 @@ You can also pass the token digits, period and algorithm using a query string in
 
 See [supported hashing algorithms](https://github.com/hectorm/otpauth#supported-hashing-algorithms) for the complete list.
 
-## Authy support
-
-To use Authy tokens outside of the Authy app, you need to extract the secret key and convert it to base-32. The resulting token can then be used with this tool.
-
-### Extract Authy secret key from Chrome App
-
-1. Install the [Authy app](https://chrome.google.com/webstore/detail/authy/gaedmjdfmmahhbjefcbgaolhhanlaolb?hl=en) in Chrome.
-1. Enter `chrome://extensions` in the address bar.
-1. Check **Developer mode**.
-1. Click the `main.html` link in the *Inspect views* section of the Authy app.
-1. Navigate to the Console.
-1. Paste the code below in the console and hit Enter.
-
-```
-appManager.getModel().forEach(model => console.log(`${model.name}: ${model.secretSeed}`));
-```
-
-### Convert hex keys to base-32
-
-Convert each exported hex key from above using the [hex to base-32 converter](https://totp.danhersam.com/hex-to-base32.html) in this repository.
-
-### Authy settings
-
-Use the following settings for native Authy tokens.
-
-**Digits:** 7
-**Period:** 10
-
-The period shown in the Authy Chrome App is 20 seconds, but it actually uses 10 second intervals and skips every other token.
-
-If your authenticator application only allows 6 or 8 digits (like [FreeOTP](https://freeotp.github.io/)), choose 8 digits and use the last 7 digits for your code.
-
 ### Import using QR codes
 
 To make it easier to import Authy entries into another authenticator app, generate QR codes using my [QR code generator](https://dan.hersam.com/tools/gen-qr-code.html).
